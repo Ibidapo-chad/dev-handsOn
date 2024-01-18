@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/home/donokage/devProjs/vprofile-project/vagrant/Manual_provisioning/test","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
