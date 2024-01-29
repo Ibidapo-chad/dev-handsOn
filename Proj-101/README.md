@@ -50,3 +50,76 @@ Setup should be done in the following order:
 (Web SVC)
 
 
+## 1. MYSQL SETUP
+
+
+Login to the db vm
+<br/>`$ vagrant ssh db01`
+
+Verify Hosts entry, if entries missing update the it with IP and hostnames
+
+`# cat /etc/hosts`
+
+Update OS with latest patches
+
+`# yum update -y`
+
+Set Repository
+
+`# yum install epel-release -y`
+
+Install Maria DB Package
+`# yum install git mariadb-server -y`
+
+Starting & enabling mariadb-server
+
+```
+# systemctl start mariadb
+# systemctl enable mariadb
+```
+
+> [!NOTE]
+> Set db root password, I will be using admin123 as password
+
+Set DB name and users.
+
+`# mysql -u root -padmin123`
+
+```
+mysql> create database accounts;
+mysql> grant all privileges on accounts.* TO 'admin'@'%' identified by 'admin123';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
+```
+Download Source code & Initialize Database.
+```
+#git clone -b main https://github.com/hkhcoder/vprofile-project.git
+
+#cd vprofile-project
+
+#mysql -u root -padmin123 accounts < src/main/resources db_backup.sql
+
+#mysql -u root -padmin123 accounts
+```
+```
+mysql> show tables;
+mysql> exit;
+```
+Restart mariadb-server
+
+`# systemctl restart mariadb`
+
+Starting the firewall and allowing the mariadb to access from port no. 3306
+```
+#systemctl start firewalld
+
+#systemctl enable firewalld
+
+#firewall-cmd --get-active-zones
+
+#firewall-cmd --zone=public --add-port=3306/tcp --permanent
+
+#firewall-cmd --reload
+
+#systemctl restart mariadb
+```
