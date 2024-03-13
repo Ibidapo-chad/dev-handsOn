@@ -22,7 +22,7 @@ If vm setup stops in the middle run “vagrant up” command again.
 SYSTEM DESIGN DIAGRAM
 ___
 
-![Web Design Architecture](./SysDesignDiag.drawio)
+![Web Design Architecture](./SysDesignDiag.drawio.svg)
 
 ## Provisioning 
 ### Services / Stack
