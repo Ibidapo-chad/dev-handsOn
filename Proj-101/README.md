@@ -19,10 +19,10 @@ This is project defines a manual setup of VMs running separate different service
 > Bringing up all the vm’s may take a long time based on various factors.
 If vm setup stops in the middle run “vagrant up” command again.
 
-SYSTEM DESIGN DIAGRAM
+## SYSTEM DESIGN DIAGRAM
 ___
 
-![Web Design Architecture](./SysDesignDiag.drawio.svg)
+![Web Design Architecture](./SysDesignDiag.svg)
 
 ## Provisioning 
 ### Services / Stack
